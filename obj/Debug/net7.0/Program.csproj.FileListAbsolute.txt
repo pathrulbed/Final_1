@@ -1,0 +1,15 @@
+D:\Academic\MDT112\Final_1\Program\bin\Debug\net7.0\Program.exe
+D:\Academic\MDT112\Final_1\Program\bin\Debug\net7.0\Program.deps.json
+D:\Academic\MDT112\Final_1\Program\bin\Debug\net7.0\Program.runtimeconfig.json
+D:\Academic\MDT112\Final_1\Program\bin\Debug\net7.0\Program.dll
+D:\Academic\MDT112\Final_1\Program\bin\Debug\net7.0\Program.pdb
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.csproj.AssemblyReference.cache
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.GeneratedMSBuildEditorConfig.editorconfig
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.AssemblyInfoInputs.cache
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.AssemblyInfo.cs
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.csproj.CoreCompileInputs.cache
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.dll
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\refint\Program.dll
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.pdb
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\Program.genruntimeconfig.cache
+D:\Academic\MDT112\Final_1\Program\obj\Debug\net7.0\ref\Program.dll
