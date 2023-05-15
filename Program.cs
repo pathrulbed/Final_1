@@ -2,44 +2,58 @@
 
 class Program
 {
+    public struct City_temp
+    {
+        public string name;
+        public int numberCity;
+        public int level; 
+        public void city(string name, int level, int numberCity) 
+        {
+            string Name = name;
+            int Level = level;
+            int NumberCity = numberCity;
+        }
+    }
     public struct City 
     {
         public string name;
-        public int Amount_num;
-        public int NumberCity;
+        public int numberCity;
         public int level; 
-        public void city(string name, int level, int NumberCity) 
+        public void city(string name, int level, int numberCity) 
         {
             this.name = name;
             this.level = level;
-            this.NumberCity = NumberCity;
+            this.numberCity = numberCity;
         }
+
         public void DisplayCity()
         {
-            Console.WriteLine("{0}  {1}  Level:{2}",NumberCity, name, level);
+            Console.WriteLine("{0}  {1}  Level:{2}",numberCity, name, level);
         }
 
     }
 
     static void Main(string[] agrs)
     {
+        Console.Clear();
         bool exit = false;
         bool loop = true;
         int choose_city = 0;
         int Amount_Connect = 0;
         int check = 0;
-        Console.WriteLine("Please Input Amount Of Cities");
+        Console.Write("Please Input Amount Of Cities: ");
         int AmountOfCities = int.Parse(Console.ReadLine());
         City[] cities = new City[AmountOfCities];
+        int[] cities_temp = new int[AmountOfCities];
         int[][] City_all = new int[AmountOfCities][];
         for (int i = 0;i < (AmountOfCities);i++)
         {
-            Console.WriteLine("Please Input Name Of City");
+            Console.Write("Name Of City: ");
             string name = Console.ReadLine();
            
             while (true)
                 {
-                    Console.WriteLine("Please Input Amount Of Connect City");
+                    Console.Write("Please Input Amount Of Connect City: ");
                     int Amount_num = int.Parse(Console.ReadLine());
                     if (((Amount_num>=0)&&(Amount_num<AmountOfCities)))
                     {
@@ -70,33 +84,32 @@ class Program
                 {
                     check=0;
                     loop = true;
-                
+                    Console.Write("Connect City --> ");
                     while (loop)
                     {
-                        Console.WriteLine("Please Input number Of Connect City");
+                        
                         int connect_num = int.Parse(Console.ReadLine());
                         for (int c=0;c<Amount_Connect;c++)
                         {
                             if ((connect_num==City_all[i][c])||(connect_num<0)||(connect_num>AmountOfCities-1)||(connect_num==i))
                             {
-                                Console.WriteLine("City :"+City_all[i][c]);
-                                Console.WriteLine("I :"+i);
-                                Console.WriteLine("C :"+c);
-                                Console.WriteLine("Invalid");
+                                Console.Write("Invalid ID");
                                 loop = true;
                                 check=0;
+                                Console.WriteLine();
+                                Console.Write("Connect City --> ");
                                 break;
                             }
                             
                             else if (check>=Amount_Connect-1)
                             {
                                 City_all[i][j]=connect_num;
-                                Console.WriteLine("City :"+City_all[i][j]);
                                 loop = false;
                             }
                             check++;
                             
                         }
+                        
                     }
                 
                 }   
@@ -104,11 +117,18 @@ class Program
             }
             
         }
-
+        for (int i = 0;i < (AmountOfCities);i++)
+                    {
+                        cities[i].DisplayCity();
+                    }
         while (exit==false)
         {
             Console.WriteLine("Choose Operation (“Outbreak”, “Vaccinate”, “Lockdown”, “Spread”, “Exit”)");
             string Choose = Console.ReadLine();
+            for (int t =0;t<cities.Length;t++)
+            {
+                cities_temp[t] = cities[t].level;
+            }
             switch(Choose)
             {
                 case "Outbreak":
@@ -119,11 +139,20 @@ class Program
                     {
                         cities[City_all[choose_city][i]].level+=1;
                     }
+                    for (int i = 0;i < (AmountOfCities);i++)
+                    {
+                        cities[i].DisplayCity();
+                    }
                     
                 break;
                 case "Vaccinate":
                     Console.WriteLine("Please Choose City");
-                    choose_city = 0;
+                    choose_city = int.Parse(Console.ReadLine());
+                    cities[choose_city].level=0;
+                    for (int i = 0;i < (AmountOfCities);i++)
+                    {
+                        cities[i].DisplayCity();
+                    }
                 break;
                 case "Lockdown":
                     Console.WriteLine("Please Choose City");
@@ -133,12 +162,27 @@ class Program
                     {
                         cities[City_all[choose_city][i]].level-=1;
                     }
+                    for (int i = 0;i < (AmountOfCities);i++)
+                    {
+                        cities[i].DisplayCity();
+                    }
                 break;
                 case "Spread":
-                    for (int i=0;i<(City_all[choose_city].Length);i++)
+                    for (int i=0;i<AmountOfCities;i++)
                     {
-                        
-                        cities[City_all[choose_city][i]].level+=1;
+                        for (int j=0;j<(City_all[i].Length);j++)
+                        {
+                            if (cities[i].level < cities_temp[City_all[i][j]])
+                            {
+                                cities[i].level+=1;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    for (int i = 0;i < (AmountOfCities);i++)
+                    {
+                        cities[i].DisplayCity();
                     }
                 break;
                 case "Exit":
@@ -148,36 +192,8 @@ class Program
                     Console.WriteLine("Invalid");
                 break;
             }
-            for (int i = 0;i < (AmountOfCities);i++)
-            {
-                cities[i].DisplayCity();
-            }
+            
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        /*
-        for (int i = 0;i < (AmountOfCities);i++)
-        {
-            cities[i].DisplayCity();
-        }
-        Console.WriteLine("Please Input Level Of Virus");
-            int AmountOfVirus = int.Parse(Console.ReadLine());
-        
-        int[] box = {(cities[0].level), (cities[1].level)};
-        for (int i=0;i<box.Length;i++)
-        {
-            cities[i].level+=AmountOfVirus;
-        }
-        for (int i = 0;i < (AmountOfCities);i++)
-        {
-            cities[i].DisplayCity();
-        }*/
     }
 }
