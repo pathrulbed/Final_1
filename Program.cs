@@ -71,13 +71,8 @@ class Program
                     int connect_num = int.Parse(Console.ReadLine());
                     if (((connect_num>=0)&&(connect_num<=AmountOfCities))&&(connect_num!=i))
                     {
-                        for (int m =0;m<=AmountOfCities-1;m++)
-                        {
-                            if (City_all[i][m]!=connect_num)
-                            {
-                                City_all[i][j] = connect_num;
-                            }
-                            else
+                       
+                            
                             {
                                 Console.WriteLine("Please Input number Of Connect City");
                                 connect_num = int.Parse(Console.ReadLine());
